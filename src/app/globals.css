@@ -35,6 +35,17 @@ All colors MUST be HSL.
 
   --radius: 0.5rem;
 
+  /* Language Learning Theme Colors */
+  --learning-primary: 210 100% 50%;
+  --learning-primary-foreground: 0 0% 100%;
+  --learning-secondary: 150 100% 40%;
+  --learning-secondary-foreground: 0 0% 100%;
+  --learning-accent: 45 100% 60%;
+  --learning-accent-foreground: 0 0% 0%;
+  --learning-success: 120 100% 35%;
+  --learning-warning: 30 100% 50%;
+  --learning-error: 0 100% 60%;
+
   --sidebar-background: 0 0% 98%;
   --sidebar-foreground: 240 5.3% 26.1%;
   --sidebar-primary: 240 5.9% 10%;
@@ -124,7 +135,18 @@ All colors MUST be HSL.
   --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
   --color-sidebar-border: hsl(var(--sidebar-border));
   --color-sidebar-ring: hsl(var(--sidebar-ring));
-  
+
+  /* Language Learning Colors */
+  --color-learning-primary: hsl(var(--learning-primary));
+  --color-learning-primary-foreground: hsl(var(--learning-primary-foreground));
+  --color-learning-secondary: hsl(var(--learning-secondary));
+  --color-learning-secondary-foreground: hsl(var(--learning-secondary-foreground));
+  --color-learning-accent: hsl(var(--learning-accent));
+  --color-learning-accent-foreground: hsl(var(--learning-accent-foreground));
+  --color-learning-success: hsl(var(--learning-success));
+  --color-learning-warning: hsl(var(--learning-warning));
+  --color-learning-error: hsl(var(--learning-error));
+
   /* Border Radius */
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -160,4 +182,52 @@ All colors MUST be HSL.
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+}
+
+/* Custom styles for language learning components */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.4); }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Gradient animations */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
 }
