@@ -45,7 +45,7 @@ const SimpleBarChart = ({ data, className }: { data: number[], className?: strin
       {data.map((value, index) => (
         <div
           key={index}
-          className="bg-blue-500 rounded-t flex-1 transition-all duration-300 hover:bg-blue-600"
+          className="bg-blue-600 rounded-t flex-1 transition-all duration-300 hover:bg-blue-500"
           style={{
             height: `${(value / maxValue) * 100}%`,
             minHeight: '4px',
@@ -63,7 +63,7 @@ const SimpleLineChart = ({ data, className }: { data: number[], className?: stri
       <svg width="100%" height="100%" className="overflow-visible">
         <polyline
           fill="none"
-          stroke="#3b82f6"
+          stroke="#60a5fa"
           strokeWidth="2"
           points={data
             .map((value, index) =>
@@ -77,7 +77,7 @@ const SimpleLineChart = ({ data, className }: { data: number[], className?: stri
             cx={`${(index / (data.length - 1)) * 100}%`}
             cy={`${100 - (value / Math.max(...data)) * 80}%`}
             r="3"
-            fill="#3b82f6"
+            fill="#60a5fa"
             className="hover:r-4 transition-all cursor-pointer"
           >
             <title>{`Day ${index + 1}: Level ${value}`}</title>
@@ -151,9 +151,9 @@ export default function ProgressPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Header */}
-      <header className="bg-white border-b border-blue-100 shadow-sm">
+      <header className="bg-slate-800 border-b border-slate-700 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -164,8 +164,8 @@ export default function ProgressPage() {
                 </Button>
               </Link>
               <div>
-                <h1 className="text-2xl font-bold text-gray-800">Your Progress</h1>
-                <p className="text-sm text-gray-600">Track your learning journey</p>
+                <h1 className="text-2xl font-bold text-gray-100">Your Progress</h1>
+                <p className="text-sm text-gray-300">Track your learning journey</p>
               </div>
             </div>
 
@@ -195,34 +195,34 @@ export default function ProgressPage() {
           <TabsContent value="overview" className="space-y-6">
             {/* Quick Stats */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200">
+              <Card className="bg-gradient-to-r from-blue-900/20 to-blue-800/20 border-blue-700">
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
                     <Trophy className="w-6 h-6 text-white" />
                   </div>
-                  <div className="text-2xl font-bold text-gray-800">{userProgress.level}</div>
-                  <div className="text-sm text-gray-600">Current Level</div>
+                  <div className="text-2xl font-bold text-gray-100">{userProgress.level}</div>
+                  <div className="text-sm text-gray-400">Current Level</div>
                   <Progress value={calculateNextLevelProgress()} className="mt-2 h-1" />
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-r from-green-50 to-green-100 border-green-200">
+              <Card className="bg-gradient-to-r from-green-900/20 to-green-800/20 border-green-700">
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
                     <BookOpen className="w-6 h-6 text-white" />
                   </div>
-                  <div className="text-2xl font-bold text-gray-800">{userProgress.totalWordsLearned}</div>
-                  <div className="text-sm text-gray-600">Words Learned</div>
+                  <div className="text-2xl font-bold text-gray-100">{userProgress.totalWordsLearned}</div>
+                  <div className="text-sm text-gray-400">Words Learned</div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-r from-orange-50 to-orange-100 border-orange-200">
+              <Card className="bg-gradient-to-r from-orange-900/20 to-orange-800/20 border-orange-700">
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-3">
                     <Flame className="w-6 h-6 text-white" />
                   </div>
-                  <div className="text-2xl font-bold text-gray-800">{userProgress.currentStreak}</div>
-                  <div className="text-sm text-gray-600">Day Streak</div>
+                  <div className="text-2xl font-bold text-gray-100">{userProgress.currentStreak}</div>
+                  <div className="text-sm text-gray-400">Day Streak</div>
                 </CardContent>
               </Card>
 
@@ -231,8 +231,8 @@ export default function ProgressPage() {
                   <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-3">
                     <Star className="w-6 h-6 text-white" />
                   </div>
-                  <div className="text-2xl font-bold text-gray-800">{userProgress.xp}</div>
-                  <div className="text-sm text-gray-600">Total XP</div>
+                  <div className="text-2xl font-bold text-gray-100">{userProgress.xp}</div>
+                  <div className="text-sm text-gray-400">Total XP</div>
                 </CardContent>
               </Card>
             </div>
@@ -250,7 +250,7 @@ export default function ProgressPage() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
-                    <Crown className="w-5 h-5 text-yellow-600" />
+                    <Crown className="w-5 h-5 text-yellow-400" />
                     <span>Level Progress</span>
                   </CardTitle>
                 </CardHeader>
@@ -289,7 +289,7 @@ export default function ProgressPage() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle className="flex items-center space-x-2">
-                    <Award className="w-5 h-5 text-yellow-600" />
+                    <Award className="w-5 h-5 text-yellow-400" />
                     <span>Recent Achievements</span>
                   </CardTitle>
                   <Link href="#achievements">

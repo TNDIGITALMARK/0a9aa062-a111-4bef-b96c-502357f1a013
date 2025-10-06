@@ -50,9 +50,9 @@ export default function DashboardPage() {
   const dailyProgressPercentage = (userProgress.wordsLearnedToday / userProgress.dailyGoal) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Header */}
-      <header className="bg-white border-b border-blue-100 shadow-sm">
+      <header className="bg-slate-800 border-b border-slate-700 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -61,20 +61,20 @@ export default function DashboardPage() {
                   <Globe className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-gray-800">LinguaFlow</h1>
-                  <p className="text-sm text-gray-600">Your language learning journey</p>
+                  <h1 className="text-xl font-bold text-gray-100">LinguaFlow</h1>
+                  <p className="text-sm text-gray-300">Your language learning journey</p>
                 </div>
               </div>
             </div>
 
             <nav className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-blue-600 font-medium">
+              <Link href="/" className="text-blue-400 font-medium">
                 Dashboard
               </Link>
-              <Link href="/learn" className="text-gray-600 hover:text-blue-600 transition-colors">
+              <Link href="/learn" className="text-gray-300 hover:text-blue-400 transition-colors">
                 Learn
               </Link>
-              <Link href="/progress" className="text-gray-600 hover:text-blue-600 transition-colors">
+              <Link href="/progress" className="text-gray-300 hover:text-blue-400 transition-colors">
                 Progress
               </Link>
               <Button size="sm" className="bg-gradient-to-r from-blue-600 to-green-600">
@@ -88,10 +88,10 @@ export default function DashboardPage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">
+          <h2 className="text-3xl font-bold text-gray-100 mb-2">
             {getGreeting()}! Ready to learn?
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-300 text-lg">
             You're doing great! Keep up the momentum with your daily practice.
           </p>
         </div>
@@ -107,14 +107,14 @@ export default function DashboardPage() {
           </div>
 
           {/* Daily Goal Progress */}
-          <Card className="lg:col-span-2 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
+          <Card className="lg:col-span-2 bg-gradient-to-r from-emerald-900/20 to-green-900/20 border-green-700">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center space-x-2">
-                  <Target className="w-5 h-5 text-green-600" />
+                  <Target className="w-5 h-5 text-green-400" />
                   <span>Daily Goal</span>
                 </CardTitle>
-                <Badge variant="outline" className="bg-white">
+                <Badge variant="outline" className="bg-slate-800 border-slate-600">
                   {userProgress.wordsLearnedToday}/{userProgress.dailyGoal} words
                 </Badge>
               </div>
@@ -125,14 +125,14 @@ export default function DashboardPage() {
                   value={dailyProgressPercentage}
                   className="h-3"
                 />
-                <div className="flex justify-between text-sm text-gray-600">
+                <div className="flex justify-between text-sm text-gray-400">
                   <span>
                     {userProgress.dailyGoal - userProgress.wordsLearnedToday} words remaining
                   </span>
                   <span>{Math.round(dailyProgressPercentage)}% complete</span>
                 </div>
                 {dailyProgressPercentage >= 100 && (
-                  <div className="flex items-center space-x-2 text-green-600">
+                  <div className="flex items-center space-x-2 text-green-400">
                     <Star className="w-4 h-4 fill-current" />
                     <span className="text-sm font-medium">Goal completed! 🎉</span>
                   </div>
@@ -147,7 +147,7 @@ export default function DashboardPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
-                <Globe className="w-5 h-5 text-blue-600" />
+                <Globe className="w-5 h-5 text-blue-400" />
                 <span>Your Languages</span>
               </CardTitle>
             </CardHeader>
@@ -158,8 +158,8 @@ export default function DashboardPage() {
                     key={language.code}
                     className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
                       selectedLanguage === language.code
-                        ? 'border-blue-300 bg-blue-50'
-                        : 'border-gray-200 hover:border-blue-200 hover:bg-gray-50'
+                        ? 'border-blue-500 bg-blue-900/20'
+                        : 'border-slate-600 hover:border-blue-500 hover:bg-slate-700/50'
                     }`}
                     onClick={() => setSelectedLanguage(language.code)}
                   >
@@ -167,17 +167,17 @@ export default function DashboardPage() {
                       <div className="flex items-center space-x-3">
                         <span className="text-2xl">{language.flag}</span>
                         <div>
-                          <h3 className="font-semibold text-gray-800">{language.name}</h3>
-                          <p className="text-sm text-gray-600">
+                          <h3 className="font-semibold text-gray-100">{language.name}</h3>
+                          <p className="text-sm text-gray-400">
                             Level {userProgress.languageProgress[language.code]?.level || 1}
                           </p>
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-lg font-bold text-blue-600">
+                        <div className="text-lg font-bold text-blue-400">
                           {userProgress.languageProgress[language.code]?.wordsLearned || 0}
                         </div>
-                        <div className="text-xs text-gray-600">words learned</div>
+                        <div className="text-xs text-gray-400">words learned</div>
                       </div>
                     </div>
                   </div>
@@ -190,7 +190,7 @@ export default function DashboardPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
-                <TrendingUp className="w-5 h-5 text-purple-600" />
+                <TrendingUp className="w-5 h-5 text-purple-400" />
                 <span>Overall Progress</span>
               </CardTitle>
             </CardHeader>
@@ -202,26 +202,26 @@ export default function DashboardPage() {
                   variant="primary"
                 >
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-gray-800">
+                    <div className="text-2xl font-bold text-gray-100">
                       {userProgress.level}
                     </div>
-                    <div className="text-xs text-gray-600">level</div>
+                    <div className="text-xs text-gray-400">level</div>
                   </div>
                 </ProgressRing>
               </div>
 
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600">
+                  <div className="text-2xl font-bold text-blue-400">
                     {userProgress.totalWordsLearned}
                   </div>
-                  <div className="text-gray-600">Total Words</div>
+                  <div className="text-gray-400">Total Words</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600">
+                  <div className="text-2xl font-bold text-green-400">
                     {userProgress.totalLessonsCompleted}
                   </div>
-                  <div className="text-gray-600">Lessons</div>
+                  <div className="text-gray-400">Lessons</div>
                 </div>
               </div>
             </CardContent>
@@ -231,18 +231,18 @@ export default function DashboardPage() {
         {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {/* Start Learning */}
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer bg-gradient-to-br from-blue-900/20 to-blue-800/20 border-blue-700">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="p-3 bg-blue-600 rounded-full">
                   <Play className="w-6 h-6 text-white" />
                 </div>
-                <ChevronRight className="w-5 h-5 text-blue-600" />
+                <ChevronRight className="w-5 h-5 text-blue-400" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              <h3 className="text-xl font-semibold text-gray-100 mb-2">
                 Start Learning
               </h3>
-              <p className="text-gray-600 text-sm mb-4">
+              <p className="text-gray-300 text-sm mb-4">
                 Continue with your {currentLanguage?.name} lessons
               </p>
               <Link href="/learn">
@@ -254,7 +254,7 @@ export default function DashboardPage() {
           </Card>
 
           {/* Review Words */}
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200">
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer bg-gradient-to-br from-orange-900/20 to-orange-800/20 border-orange-700">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="p-3 bg-orange-600 rounded-full">
@@ -262,14 +262,14 @@ export default function DashboardPage() {
                 </div>
                 <Badge className="bg-orange-600">{dueWords.length}</Badge>
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              <h3 className="text-xl font-semibold text-gray-100 mb-2">
                 Review Words
               </h3>
-              <p className="text-gray-600 text-sm mb-4">
+              <p className="text-gray-300 text-sm mb-4">
                 {dueWords.length} words are due for review
               </p>
               <Link href="/learn?mode=review">
-                <Button variant="outline" className="w-full border-orange-600 text-orange-600 hover:bg-orange-50">
+                <Button variant="outline" className="w-full border-orange-500 text-orange-400 hover:bg-orange-900/20">
                   Start Review
                 </Button>
               </Link>
@@ -277,7 +277,7 @@ export default function DashboardPage() {
           </Card>
 
           {/* View Progress */}
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer bg-gradient-to-br from-green-50 to-green-100 border-green-200">
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer bg-gradient-to-br from-green-900/20 to-green-800/20 border-green-700">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="p-3 bg-green-600 rounded-full">
@@ -285,14 +285,14 @@ export default function DashboardPage() {
                 </div>
                 <Badge className="bg-green-600">{userProgress.achievements.length}</Badge>
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              <h3 className="text-xl font-semibold text-gray-100 mb-2">
                 View Progress
               </h3>
-              <p className="text-gray-600 text-sm mb-4">
+              <p className="text-gray-300 text-sm mb-4">
                 Check your achievements and stats
               </p>
               <Link href="/progress">
-                <Button variant="outline" className="w-full border-green-600 text-green-600 hover:bg-green-50">
+                <Button variant="outline" className="w-full border-green-500 text-green-400 hover:bg-green-900/20">
                   View Progress
                 </Button>
               </Link>
@@ -305,7 +305,7 @@ export default function DashboardPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
-                <Award className="w-5 h-5 text-yellow-600" />
+                <Award className="w-5 h-5 text-yellow-400" />
                 <span>Recent Achievements</span>
               </CardTitle>
             </CardHeader>
@@ -314,13 +314,13 @@ export default function DashboardPage() {
                 {userProgress.achievements.slice(0, 4).map((achievement) => (
                   <div
                     key={achievement.id}
-                    className="p-4 rounded-lg bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 text-center"
+                    className="p-4 rounded-lg bg-gradient-to-r from-yellow-900/20 to-orange-900/20 border border-yellow-700 text-center"
                   >
                     <div className="text-3xl mb-2">{achievement.icon}</div>
-                    <h4 className="font-semibold text-gray-800 text-sm mb-1">
+                    <h4 className="font-semibold text-gray-100 text-sm mb-1">
                       {achievement.title}
                     </h4>
-                    <p className="text-xs text-gray-600">
+                    <p className="text-xs text-gray-400">
                       {achievement.description}
                     </p>
                   </div>

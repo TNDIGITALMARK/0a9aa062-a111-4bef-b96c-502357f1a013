@@ -234,10 +234,10 @@ export default function LearnPage() {
 
   if (isLoading || !session) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Preparing your lesson...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400 mx-auto mb-4"></div>
+          <p className="text-gray-300">Preparing your lesson...</p>
         </div>
       </div>
     );
@@ -248,9 +248,9 @@ export default function LearnPage() {
   const accuracy = calculateAccuracy();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Header */}
-      <header className="bg-white border-b border-blue-100 shadow-sm">
+      <header className="bg-slate-800 border-b border-slate-700 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -262,7 +262,7 @@ export default function LearnPage() {
               </Link>
 
               <div className="flex items-center space-x-3">
-                <Badge className="bg-blue-100 text-blue-800">
+                <Badge className="bg-blue-900/50 text-blue-300">
                   {session.language}
                 </Badge>
                 <Badge variant="outline" className="capitalize">
@@ -298,10 +298,10 @@ export default function LearnPage() {
           {/* Progress Bar */}
           <div className="mt-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-gray-300">
                 {session.currentIndex + 1} of {session.words.length}
               </span>
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-gray-300">
                 {accuracy}% accuracy
               </span>
             </div>
@@ -314,9 +314,9 @@ export default function LearnPage() {
         <div className="flex-1 flex items-center justify-center p-8">
           <Card className="max-w-md mx-auto text-center">
             <CardContent className="p-8">
-              <Pause className="w-16 h-16 mx-auto text-blue-600 mb-4" />
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Lesson Paused</h2>
-              <p className="text-gray-600 mb-6">
+              <Pause className="w-16 h-16 mx-auto text-blue-400 mb-4" />
+              <h2 className="text-2xl font-bold text-gray-100 mb-4">Lesson Paused</h2>
+              <p className="text-gray-300 mb-6">
                 Take your time. Resume when you're ready to continue.
               </p>
               <div className="flex flex-col space-y-3">
@@ -352,10 +352,10 @@ export default function LearnPage() {
                     </Button>
 
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-gray-800">
+                      <div className="text-2xl font-bold text-gray-100">
                         {session.currentIndex + 1}
                       </div>
-                      <div className="text-sm text-gray-600">
+                      <div className="text-sm text-gray-400">
                         of {session.words.length}
                       </div>
                     </div>
@@ -406,7 +406,7 @@ export default function LearnPage() {
                 />
 
                 {/* Mobile Swipe Instructions */}
-                <div className="md:hidden text-center text-gray-500 text-sm mt-4">
+                <div className="md:hidden text-center text-gray-400 text-sm mt-4">
                   <p className="flex items-center justify-center space-x-4">
                     <span className="flex items-center">
                       <ArrowLeft className="w-4 h-4 mr-1" />
@@ -426,7 +426,7 @@ export default function LearnPage() {
                       variant="outline"
                       size="lg"
                       onClick={handleIncorrect}
-                      className="flex items-center space-x-2 border-red-300 text-red-600 hover:bg-red-50"
+                      className="flex items-center space-x-2 border-red-500 text-red-400 hover:bg-red-900/20"
                     >
                       <X className="w-5 h-5" />
                       <span>Don't Know</span>
@@ -434,7 +434,7 @@ export default function LearnPage() {
                     <Button
                       size="lg"
                       onClick={handleCorrect}
-                      className="flex items-center space-x-2 bg-green-600 hover:bg-green-700"
+                      className="flex items-center space-x-2 bg-green-700 hover:bg-green-600"
                     >
                       <Check className="w-5 h-5" />
                       <span>I Know This</span>
@@ -444,21 +444,21 @@ export default function LearnPage() {
 
                 {/* Review Mode Instructions */}
                 {mode === 'review' && (
-                  <div className="text-center text-gray-600 text-sm">
+                  <div className="text-center text-gray-300 text-sm">
                     <p>Review these words to strengthen your memory</p>
                   </div>
                 )}
 
                 {/* Learn Mode Instructions */}
                 {mode === 'learn' && (
-                  <div className="text-center text-gray-600 text-sm">
+                  <div className="text-center text-gray-300 text-sm">
                     <p>Take your time to learn each word</p>
                   </div>
                 )}
               </div>
             ) : (
               <div className="text-center">
-                <div className="text-gray-600 mb-4">No more words in this session</div>
+                <div className="text-gray-300 mb-4">No more words in this session</div>
                 <Button onClick={completeSession}>Complete Lesson</Button>
               </div>
             )}
@@ -468,9 +468,9 @@ export default function LearnPage() {
 
       {/* Session Statistics */}
       <div className="fixed bottom-4 right-4 hidden md:block">
-        <Card className="bg-white/90 backdrop-blur-sm border-gray-200">
+        <Card className="bg-slate-800/90 backdrop-blur-sm border-slate-600">
           <CardContent className="p-4">
-            <div className="text-xs text-gray-600 space-y-1">
+            <div className="text-xs text-gray-300 space-y-1">
               <div>Correct: {session.correctCount}</div>
               <div>Incorrect: {session.incorrectCount}</div>
               <div>Time: {getTimeSpent()}m</div>
